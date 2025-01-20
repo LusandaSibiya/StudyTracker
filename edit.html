@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Self Study Calculator</title>
+  <link rel="stylesheet" type="text/css" href="study.css">
+</head>
+<body>
+    <div class="background"></div>
+    <h1>Self Study Calculator</h1>
+  <div class="container">
+    <div id="calculator">
+      <form>
+        <div class="form-field">
+          <label for="totalCreditHours">Total Credit Hours Of Study</label>
+          <input id="totalCreditHours" type="text" placeholder="Total credit hours of study">
+        </div>
+        <div class="form-field">
+          <label for="module">Select Module</label>
+          <select name="module" id="module">
+            <option disabled selected value="0">-- Choose a Module --</option>
+            <option value="Software Engineering">Software Engineering</option>
+            <option value="Project Management">Project Management</option>
+            <option value="Programming">Programming</option>
+            <option value="Professional Communication">Professional Communication</option>
+            <option value="Multimedia Application Foundations">Multimedia Application Foundations</option>
+            <option value="Information Systems">Information Systems</option>
+            <option value="ICT Electives">ICT Electives</option>
+            <option value="Communication Networks Fundamentals">Communication Networks Fundamentals</option>
+            <option value="Big Data Foundations">Big Data Foundations</option>
+          </select>
+        </div>
+
+        <div class="form-field">
+          <label for="studytime">Study Time</label>
+          <input id="studytime" type="text" placeholder="Hours Of Study Per Week"> 
+        </div>
+
+        <div class="button-container">
+            <button type="button" id="Clear">Clear</button>
+    </div>
+    <div class="button-container">
+        <button type="button" id="Update">Update</button>
+</div>
+        <div class="button-container">
+        <button type="button" id="Calculate">Calculate</button>
+</div>
+
+
+      </form>
+    </div>
+    <div id="totalstudytime">
+      <sup></sup><span id="hours"><span>
+     
+    </div>
+  </div>
+
+  <script type="text/javascript" src="studycalculator.js"></script>
+
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.getElementById('Calculate').addEventListener('click', function () {
+        
+        const totalCreditHours = parseInt(document.getElementById('totalCreditHours').value);
+        const selectedModule = document.getElementById('module').value;
+    
+        
+        const moduleStudyTimes = {
+          'Software Engineering': 10,
+          'Project Management': 8,
+          'Programming': 12,
+          
+        };
+    
+        const studyTime = moduleStudyTimes[selectedModule] * totalCreditHours;
+    
+        
+        document.getElementById('totalstudytime').innerHTML = `<sup></sup><span id="hours">${studyTime}<span>`;
+      });
+    });
+    </script>
+
+    <script>document.addEventListener('DOMContentLoaded', function () {
+       
+        document.getElementById('Clear').addEventListener('click', function () {
+         
+          document.getElementById('totalCreditHours').value = '';
+          document.getElementById('module').value = '0'; 
+          document.getElementById('studytime').value = '';
+      
+          
+          document.getElementById('totalstudytime').innerHTML = '';
+        });
+      });</script>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          
+          document.getElementById('Update').addEventListener('click', function () {
+            
+            const totalCreditHours = parseInt(document.getElementById('totalCreditHours').value);
+            const selectedModule = document.getElementById('module').value;
+        
+            
+            const moduleStudyTimes = {
+              'Software Engineering': 10,
+              'Project Management': 8,
+              'Programming': 12,
+              
+            };
+        
+         
+            const studyTime = moduleStudyTimes[selectedModule] * totalCreditHours;
+        
+            document.getElementById('totalstudytime').innerHTML = `<sup></sup><span id="hours">${studyTime}<span>`;
+          });
+        });
+        
+        </script>
+</body>
+</html>
+
